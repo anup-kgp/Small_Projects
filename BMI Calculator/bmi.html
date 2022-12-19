@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        BMI Calculator
+    </title>
+    <style>
+       input
+       {
+        display: block;
+        margin-bottom: 20px;
+       }
+    </style>
+</head>
+<body>
+    <h1>Check your BMI</h1>
+    <h3>Enter your Weight and Height below to check your BMI Result</h3>
+    <h3>Put your Weight in here (KG)</h3>
+    <input type="number" placeholder="Enter Weight"/>
+    <h3>Put your Height in here (CM)</h3>
+    <input type="number" placeholder="Enter Height"/>
+    <button>Calculate BMI</button>
+    <h3 id="output"></h3>
+</body>
+</html>
+
+<script>
+  let btn = document.querySelector("button").addEventListener("click",myBmi);
+  
+  function myBmi(event)
+  {
+    let bmi = document.querySelectorAll("input");
+       let x = (bmi[0].value);
+       let y = (bmi[1].value);
+       let index = (x/((y*y)/10000)).toFixed(2);
+       if(x == "" || y == "")
+       {
+        document.querySelector("#output").innerText = "Please Provide Proper Height and Weight"
+       }
+       else if(index<=18.4)
+       {
+         document.querySelector("#output").innerText = "Your BMI is"+ " "+index+" "+"which means you are UnderWeight"
+       }
+       else if(index>=18.5 && index <= 24.9)
+       {
+        document.querySelector("#output").innerText = "Your BMI is"+ " "+index+" "+"which means you are NormalWeight"
+       }
+       else if(index >=25 && index <= 29.9)
+       {
+        document.querySelector("#output").innerText = "Your BMI is"+ " "+index+" "+"which means you are OverWeight"
+       }
+       else if(index >= 30)
+       {
+        document.querySelector("#output").innerText = "Your BMI is"+ " "+index+" "+"which means you are Obses"
+       }
+  }
+</script>

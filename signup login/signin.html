@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+           div{
+            display: flex;
+            justify-content: center;
+        }
+        form{
+            margin: auto;
+            margin-top: 50px;
+            width: 35%;
+            box-shadow: rgba(149,157,165,0.2)0px 8px 24px;
+            padding: 50px;
+            border-radius: 10px;
+        }
+        label{
+            font-size: 15px;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 20px;
+        }
+        input[type="text"],select{
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 15px;
+        resize: vertical;
+        border-radius: 9px;
+        }
+        input[type="submit"]{
+        font-size: 15px;
+        padding: 12px 20px;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 9px;
+        border: 0px;
+
+        }
+        input[type="Password"]{
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 15px;
+        resize: vertical;
+        border-radius: 9px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="Loginpage">
+        <form>
+            <h1>Login</h1>
+           
+            <label for="">Email</label><br/>
+            <input type="text" id="email" placeholder="Enter Email"/><br/>
+            <label for="">Password</label><br/>
+            <input type="Password" id="Password" placeholder="Enter Password"/><br/>
+            <input type="submit"/>
+           
+    </div>
+</body>
+<script>
+    let form=document.querySelector("form");
+    let signupLS=JSON.parse(localStorage.getItem("signup"))||[];
+    form.addEventListener("submit",function(event){
+        event.preventDefault();
+        if(signupLS.length===0){
+            alert("No user exist");
+            return;
+        }
+        let obj={
+            email:form.email.value,
+            Password:form.Password.value,
+        }
+        console.log(obj)
+        signupLS.forEach(function(ele){
+            if(ele.email===obj.email && ele.Password===obj.Password){
+                localStorage.setItem("signin",JSON.stringify(ele));
+                alert("sing up sucessfull");
+            }else{
+                alert("wrong password or email")
+            }
+        })
+    })
+
+</script>
+</html>
